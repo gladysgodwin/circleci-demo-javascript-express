@@ -18,9 +18,9 @@ workflows:
   default:
     jobs:
       - print_hello
-      - print_world
-         # requires: 
-           # - print_hello
+      - print_world:
+          requires : 
+            - print_hello
             
 
 # Define a job to be invoked later in a workflow.
