@@ -16,7 +16,7 @@ jobs:
   
   print_my_name: 
     docker:
-      - image: circleci/node:13.8.0
+      - image: alpine:latest 
     steps:   
       - run:
           name: "print my name via env var" 
@@ -30,6 +30,9 @@ workflows:
       - print_world:
           requires : 
             - print_hello
+      - print_my_name:
+          requires :
+            - print_world
             
 
 # Define a job to be invoked later in a workflow.
