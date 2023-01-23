@@ -2,9 +2,9 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 jobs:
-  print_hello: 
+  print_hello:
     docker:
-      image: circleci/node:13.8.0
+      - image: circleci/node:13.8.0
     steps:
       - run: echo "hello"
 
@@ -13,14 +13,27 @@ jobs:
       - image: circleci/node:13.8.0
     steps:   
       - run: echo "world"
+  
+  print_my_name: 
+    docker:
+      - image: alpine:latest 
+    steps:   
+      - run:
+          name: "print my name via env var" 
+          command: |
+            echo $MY_ENV_VAR
 
 workflows:
   default:
     jobs:
       - print_hello
-      - print_world
-          requires: 
+      - print_world:
+          requires : 
             - print_hello
+      - print_my_name:
+          requires :
+            - print_world
+            
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
