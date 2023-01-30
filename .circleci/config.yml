@@ -6,19 +6,19 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: echo "helloworld" > ~/output.txt
+      - run: echo "helloworld" > ~/test/output.txt
       - persist_to_workspace:
           root: ~/
           paths:
-            - output.txt
+            - /test/output.txt
 
   print_output_file: 
     docker:
       - image: alpine:latest
     steps: 
     - attach_workspace:
-         at: ~/output.txt
-    - run: cat ~/output.txt
+         at: ~/test/output.txt
+    - run: cat ~/test/output.txt
 
 workflows:
   default:
