@@ -34,7 +34,10 @@ jobs:
 workflows:
   default:
     jobs:
+      - myjob
       - save_hello_world_output
+          requires : 
+            - myjob
       - print_output_file:
           requires : 
             - save_hello_world_output
