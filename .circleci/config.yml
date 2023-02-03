@@ -35,7 +35,7 @@ workflows:
   default:
     jobs:
       - myjob
-      - save_hello_world_output
+      - save_hello_world_output:
           requires : 
             - myjob
       - print_output_file:
