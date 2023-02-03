@@ -22,7 +22,6 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - print_pipeline_id
-    when: on_fail
 
   save_hello_world_output:
     docker:
@@ -45,6 +44,7 @@ jobs:
 workflows:
   myworkflow:
     jobs:
+      - error
       - myjob
       - save_hello_world_output:
           requires : 
