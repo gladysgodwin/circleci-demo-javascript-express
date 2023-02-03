@@ -6,9 +6,9 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: echo "helloworld" > ~/mycircleciprctice/circleci-demo-javascript-express/output.txt
+      - run: echo "helloworld" > ~/output.txt
       - persist_to_workspace:
-          root: ~/mycircleciprctice/circleci-demo-javascript-express/
+          root: ~/
           paths:
             - output.txt
 
@@ -17,8 +17,8 @@ jobs:
       - image: alpine:latest
     steps: 
     - attach_workspace:
-         at: ~/mycircleciprctice/circleci-demo-javascript-express/output.txt
-    - run: cat ~/mycircleciprctice/circleci-demo-javascript-express/output.txt
+         at: ~/
+    - run: cat ~/output.txt
 workflows:
   default:
     jobs:
