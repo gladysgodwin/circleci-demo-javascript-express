@@ -32,14 +32,14 @@ jobs:
     - run: cat ~/output.txt
 
 workflows:
-    jobs:
-      - myjob
-      - save_hello_world_output:
-          requires : 
-            - myjob
-      - print_output_file:
-          requires : 
-            - save_hello_world_output
+  jobs:
+    - myjob
+    - save_hello_world_output:
+        requires : 
+          - myjob
+    - print_output_file:
+        requires : 
+          - save_hello_world_output
             
 
 # Define a job to be invoked later in a workflow.
