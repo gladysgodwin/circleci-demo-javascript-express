@@ -13,7 +13,6 @@ jobs:
     steps:
       - print_pipeline_id
 
-jobs:
   save_hello_world_output:
     docker:
       - image: circleci/node:13.8.0
