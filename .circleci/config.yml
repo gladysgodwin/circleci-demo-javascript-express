@@ -32,9 +32,8 @@ jobs:
     - run: cat ~/output.txt
 
 workflows:
-  default:
     jobs:
-      - myjob:
+      - myjob
       - save_hello_world_output:
           requires : 
             - myjob
